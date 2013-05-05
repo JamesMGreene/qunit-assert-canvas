@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/JamesMGreene/qunit-assert-canvas.png)](https://travis-ci.org/JamesMGreene/qunit-assert-canvas)
+
 # QUnit Canvas assertion plugin
 
 This plugin for [QUnit](https://github.com/jquery/qunit) adds a `pixelEqual` assertion method to test
