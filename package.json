@@ -1,7 +1,7 @@
 {
   "name": "qunit-assert-canvas",
   "description": "A QUnit plugin for asserting individual pixel values within a Canvas element.",
-  "version": "1.0.1",
+  "version": "1.0.2-pre",
   "author": {
     "name": "jQuery Foundation and other contributors",
     "url": "https://github.com/JamesMGreene/qunit-assert-canvas/blob/master/AUTHORS.txt"
