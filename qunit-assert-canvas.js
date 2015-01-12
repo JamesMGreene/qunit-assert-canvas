@@ -1,13 +1,38 @@
-QUnit.extend(QUnit.assert, {
-  pixelEqual: function(canvas, x, y, r, g, b, a, message) {
-    var actual = Array.prototype.slice.apply(canvas.getContext("2d").getImageData(x, y, 1, 1).data),
-        expected = [r, g, b, a];
-    QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
- },
-  pixelNotEqual: function(canvas, x, y, r, g, b, a, message) {
-    var actual = Array.prototype.slice.apply(canvas.getContext("2d").getImageData(x, y, 1, 1).data),
-        expected = [r, g, b, a];
-    message = message || "should not be " + expected;
-    QUnit.push(!QUnit.equiv(actual, expected), actual, expected, message);
+(function(QUnit, window, undefined) {
+  "use strict";
+
+  var _slicer = Array.prototype.slice;
+
+  function _getImagePixelData(canvas, x, y) {
+    return _slicer.apply(canvas.getContext("2d").getImageData(x, y, 1, 1).data);
   }
-});
+
+  function _dumpArray(arr) {
+    return "[" + arr.join(", ") + "]";
+  }
+
+
+  QUnit.extend(QUnit.assert, {
+
+    pixelEqual: function(canvas, x, y, r, g, b, a, message) {
+      var actual = _getImagePixelData(canvas, x, y),
+          expected = [r, g, b, a];
+      message = message || "Pixel should be: " + _dumpArray(expected);
+      QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
+    },
+
+    notPixelEqual: function(canvas, x, y, r, g, b, a, message) {
+      var actual = _getImagePixelData(canvas, x, y),
+          expected = [r, g, b, a];
+      message = message || "Pixel should not be: " + _dumpArray(expected);
+      QUnit.push(!QUnit.equiv(actual, expected), actual, expected, message);
+    }
+
+  });
+
+  // Add an alias for `notHtmlEqual` == `htmlNotEqual`
+  // People will prefer one name or the another... hopefully they just pick one
+  // and stick with it. ;)
+  QUnit.assert.pixelNotEqual = QUnit.assert.notPixelEqual;
+
+})(QUnit, this || window);

@@ -2,13 +2,14 @@
 
 # QUnit Canvas assertion plugin
 
-This plugin for [QUnit](https://github.com/jquery/qunit) adds a `pixelEqual` assertion method to test
-individual pixel values in a given canvas.
+This plugin for [QUnit](https://github.com/jquery/qunit) adds `pixelEqual` and `notPixelEqual` (plus alias `pixelNotEqual`) assertion methods to test individual pixel values in a given canvas.
 
-### Usage ###
+
+## Usage
 
 ```js
 assert.pixelEqual(canvas, x, y, r, g, b, a, message);
+assert.notPixelEqual(canvas, x, y, r, g, b, a, message);  // Alias: `assert.pixelNotEqual`
 ```
 
 Where:
@@ -17,7 +18,8 @@ Where:
  - `r`, `g`, `b`, `a`: The color and opacity value of the pixel that you except
  - `message`: Optional message, same as for other assertions
 
-### Example ###
+
+## Examples
 
 ```js
 module('Example module', {
@@ -45,7 +47,12 @@ test('Example unit test', function(assert) {
   this.context.fillRect(0, 0, 5, 5);
 
   assert.pixelEqual(this.canvas, 0, 0, 0, 0, 0, 0);
+  assert.notPixelEqual(this.canvas, 0, 0, 1, 1, 1, 0);
 });
 ```
 
 For more examples, refer to the unit tests.
+
+
+## Contributing
+In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [grunt](http://gruntjs.com/).
