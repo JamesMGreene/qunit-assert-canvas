@@ -30,7 +30,7 @@
 
   });
 
-  // Add an alias for `notHtmlEqual` == `htmlNotEqual`
+  // Add an alias for `notPixelEqual` == `pixelNotEqual`
   // People will prefer one name or the another... hopefully they just pick one
   // and stick with it. ;)
   QUnit.assert.pixelNotEqual = QUnit.assert.notPixelEqual;
