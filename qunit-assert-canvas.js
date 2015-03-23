@@ -15,15 +15,37 @@
   QUnit.extend(QUnit.assert, {
 
     pixelEqual: function(canvas, x, y, r, g, b, a, message) {
+      if (typeof a === "string" && typeof message === "undefined") {
+        message = a;
+        a = undefined;
+      }
+
       var actual = _getImagePixelData(canvas, x, y),
           expected = [r, g, b, a];
+
+      if (typeof a === "undefined") {
+        actual.pop();
+        expected.pop();
+      }
+
       message = message || "Pixel should be: " + _dumpArray(expected);
       QUnit.push(QUnit.equiv(actual, expected), actual, expected, message);
     },
 
     notPixelEqual: function(canvas, x, y, r, g, b, a, message) {
+      if (typeof a === "string" && typeof message === "undefined") {
+        message = a;
+        a = undefined;
+      }
+
       var actual = _getImagePixelData(canvas, x, y),
           expected = [r, g, b, a];
+
+      if (typeof a === "undefined") {
+        actual.pop();
+        expected.pop();
+      }
+
       message = message || "Pixel should not be: " + _dumpArray(expected);
       QUnit.push(!QUnit.equiv(actual, expected), actual, expected, message);
     }

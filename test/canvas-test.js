@@ -138,4 +138,35 @@
     assert.strictEqual(assert.pixelNotEqual, assert.notPixelEqual, "Secondary alias `pixelNotEqual` assertion method exists");
   });
 
+
+  test("Opacity argument may be omitted and/or ignored", function(assert) {
+    var context,
+        canvas = document.getElementById("qunit-canvas");
+    try {
+      context = canvas.getContext("2d");
+    }
+    catch (e) {
+      // probably no canvas support, just exit
+      return;
+    }
+
+    assert.expect(12);
+
+    context.fillStyle = "rgba(0, 255, 0, 1)";
+    context.fillRect(0, 0, 5, 5);
+    assert.pixelEqual(canvas, 4, 4, 0, 255, 0, 255);
+    assert.pixelEqual(canvas, 4, 4, 0, 255, 0, 255, "pixelEqual with custom message");
+    assert.pixelEqual(canvas, 4, 4, 0, 255, 0);
+    assert.pixelEqual(canvas, 4, 4, 0, 255, 0, undefined);
+    assert.pixelEqual(canvas, 4, 4, 0, 255, 0, "pixelEqual omitting opacity, with custom message");
+    assert.pixelEqual(canvas, 4, 4, 0, 255, 0, undefined, "pixelEqual ignoring opacity, with custom message");
+    assert.notPixelEqual(canvas, 4, 4, 1, 1, 1, 0);
+    assert.notPixelEqual(canvas, 4, 4, 1, 1, 1, 0, "notPixelEqual with custom message");
+    assert.notPixelEqual(canvas, 4, 4, 1, 1, 1);
+    assert.notPixelEqual(canvas, 4, 4, 1, 1, 1, undefined);
+    assert.notPixelEqual(canvas, 4, 4, 1, 1, 1, "notPixelEqual omitting opacity, with custom message");
+    assert.notPixelEqual(canvas, 4, 4, 1, 1, 1, undefined, "notPixelEqual ignoring opacity, with custom message");
+    context.clearRect(0, 0, 5, 5);
+  });
+
 })(QUnit.module, QUnit.test);

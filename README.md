@@ -15,7 +15,7 @@ assert.notPixelEqual(canvas, x, y, r, g, b, a, message);  // Alias: `assert.pixe
 Where:
  - `canvas`: Reference to a canvas element
  - `x`, `y`: Coordinates of the pixel to test
- - `r`, `g`, `b`, `a`: The color and opacity value of the pixel that you except
+ - `r`, `g`, `b`, `a`: The color and opacity value of the pixel that you expect; opacity (`a`) may be omitted or passed `undefined` if you want to ignore it
  - `message`: Optional message, same as for other assertions
 
 
