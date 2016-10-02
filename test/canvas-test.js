@@ -102,7 +102,7 @@
 
 
   test("Canvas pixels from drawn image", function(assert) {
-    var context,
+    var context, done,
         canvas = document.getElementById("qunit-canvas"),
         imageObj = new Image();
     try {
@@ -119,14 +119,14 @@
     imageObj.onload = function() {
       context.drawImage(imageObj, 0, 0);
       assert.pixelEqual(canvas, 3, 3, 0, 255, 0, 255, "green pixel");
-      QUnit.start();
+      done();
     };
     imageObj.onerror = function() {
       assert.ok(false, "Error while loading image for test");
-      QUnit.start();
+      done();
     };
 
-    QUnit.stop();
+    done = assert.async();
     imageObj.src = "./fixtures/0-255-0.gif";
   });
 
