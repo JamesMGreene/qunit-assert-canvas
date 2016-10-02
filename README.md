@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/JamesMGreene/qunit-assert-canvas.png?branch=master)](https://travis-ci.org/JamesMGreene/qunit-assert-canvas) [![NPM version](https://badge.fury.io/js/qunit-assert-canvas.png)](https://www.npmjs.com/package/qunit-assert-canvas)
+[![Build Status](https://travis-ci.org/JamesMGreene/qunit-assert-canvas.svg?branch=master)](https://travis-ci.org/JamesMGreene/qunit-assert-canvas) [![NPM version](https://badge.fury.io/js/qunit-assert-canvas.svg)](https://www.npmjs.com/package/qunit-assert-canvas)
 
 # QUnit Canvas assertion plugin
 
